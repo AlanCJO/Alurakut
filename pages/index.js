@@ -1,39 +1,35 @@
-import styled from 'styled-components'
+import MainGrid from '../src/components/MainGrid'
+import Box from '../src/components/Box'
 
-/*
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-` */
-
-const Box = styled.div`
-  background: #ffffff;
-  border-radius: 8px;
-`;
-
-const MainGrid = styled.main`
-  display: grid;
-  grid-gap: 10px;
-  padding: 16px;
-
-  @media(min-width: 860px) {
-    grid-template-areas: "";
-    grid-template-columns: 160px 618px 312px;
-  }
-`;
+function ProfileSidebar(props) {
+  return (
+    <Box>
+      <img src={`https://github.com/${props.githubUser}.png`} styled={{ borderRadius: '8px' }} />
+    </Box>
+  )
+}
 
 export default function Home() {
+  const githubUser = 'AlanCJO'
+
   return (
     <MainGrid>
-      <Box>
-        Imagem
-      </Box>
-      <Box>
-        Bem vindo
-      </Box>
-      <Box>
-        Comunidades
-      </Box>
+      <div className="profileArea" style={{ gridArea: 'profileArea' }}>
+        <ProfileSidebar githubUser={githubUser} />
+      </div>
+      <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
+        <Box>
+          Bem vindo
+        </Box>
+      </div>
+      <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
+        <Box>
+          Pessoas da comunidade
+        </Box>
+        <Box>
+          Comunidades
+        </Box>
+      </div>
     </MainGrid>
   );
 }
